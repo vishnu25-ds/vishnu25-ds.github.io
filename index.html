@@ -13,178 +13,169 @@
 
   <style>
     /* ===== Theme ===== */
-    :root { --bg:#0b0c10; --panel:#111318; --card:#0f1117; --text:#eef2f7; --muted:#94a3b8; --border:#202736; --accent:#5eead4; }
+    :root {
+      --bg:#0b0c10; --panel:#111318; --card:#0f1117;
+      --text:#eef2f7; --muted:#94a3b8; --border:#202736; --accent:#5eead4;
+    }
     html,body{height:100%}
-    body { margin:0; background:var(--bg); color:var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; line-height:1.6; }
-    .container { width:min(1120px,92%); margin:0 auto; }
-    h1,h2,h3{margin:0 0 14px}
-    p{margin:0 0 10px}
-    a{color:inherit; text-decoration:none;}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      line-height:1.6;
+    }
+    .container{ width:min(1120px,92%); margin:0 auto; }
+    h1,h2,h3{ margin:0 0 14px; }
+    p{ margin:0 0 10px; }
+    a{ color:inherit; text-decoration:none; }
+    a:focus-visible, button:focus-visible { outline:3px solid #60a5fa; outline-offset:3px; border-radius:10px; }
 
     /* ===== Header / Nav ===== */
-    header {
-      position: sticky; top:0; z-index:50;
-      background: rgba(11,12,16,0.7); backdrop-filter: blur(8px);
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,12,16,0.7); backdrop-filter:blur(8px);
       border-bottom:1px solid var(--border);
     }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-    .brand { display:flex; align-items:center; gap:.65rem; font-weight:800; letter-spacing:.2px; }
-    .dot { width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px var(--accent); }
-    .brand a { white-space:nowrap; }
-    .menu { display:flex; gap:.6rem; flex-wrap:wrap; }
-    .menu a { padding:.5rem .75rem; border-radius:10px; border:1px solid transparent; opacity:.9; }
-    .menu a:hover { border-color:var(--border); background:var(--panel); }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand{ display:flex; align-items:center; gap:.65rem; font-weight:800; letter-spacing:.2px; }
+    .dot{ width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px var(--accent); }
+    .brand a{ white-space:nowrap; }
+    .menu{ display:flex; gap:.6rem; flex-wrap:wrap; }
+    .menu a{ padding:.5rem .75rem; border-radius:10px; border:1px solid transparent; opacity:.9; }
+    .menu a:hover{ border-color:var(--border); background:var(--panel); }
 
     /* ===== Generic UI ===== */
     section{ padding:56px 0; }
-    .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:18px 20px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+    .card{
+      background:var(--panel); border:1px solid var(--border); border-radius:18px;
+      padding:18px 20px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
     .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
     .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
     .muted{ color:var(--muted); }
-    .badge{ display:inline-block; padding:.35rem .7rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
+    .badge{
+      display:inline-block; padding:.35rem .7rem; border:1px solid var(--border);
+      border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem;
+    }
     .badges{ display:flex; gap:.6rem; flex-wrap:wrap; }
 
     /* ===== Hero ===== */
-    .hero { padding:72px 0 24px; }
-    .tag { display:inline-block; padding:.45rem .75rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
-    /* --- Hero typography to match screenshot --- */
-.hero-hi{
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
-  font-weight: 700;
-  margin: 0 0 .2rem;
-}
+    .hero{ padding:72px 0 24px; }
+    .hero-hi{
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 .2rem;
+    }
+    .hero-name{
+      font-size: clamp(2.6rem, 8.5vw, 4.8rem);
+      line-height: 1.05; letter-spacing: .2px; margin: 0 0 .4rem; font-weight: 800;
+    }
+    .hero-name span{ color: var(--accent); }
+    .hero-roles{
+      font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 600; color: var(--text); margin: 0 0 .6rem;
+    }
+    .hero-roles .pipe{ margin: 0 .5rem; opacity: .8; }
+    .hero-summary{ font-size: clamp(.95rem, 1.4vw, 1.05rem); max-width: 70ch; }
 
-.hero-name{
-  font-size: clamp(2.6rem, 8.5vw, 4.8rem); /* big name */
-  line-height: 1.05;
-  letter-spacing: .2px;
-  margin: 0 0 .4rem;
-  font-weight: 800;
-}
-
-.hero-name span{ color: var(--accent); }
-
-.hero-roles{
-  font-size: clamp(1.2rem, 3vw, 2rem);     /* large subtitle with pipes */
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 .6rem;
-}
-
-.hero-roles .pipe{
-  margin: 0 .5rem;
-  opacity: .8;
-}
-
-.hero-summary{
-  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
-  max-width: 70ch;     /* readable line length */
-}
-
-
-    /* ===== Contact Icon Buttons (inside-only pulse) ===== */
+    /* ===== Contact Icon Buttons (brand color + inside pulse) ===== */
     .contact-icons{ display:flex; gap:15px; flex-wrap:wrap; }
     .contact-icons a{
       --bgc:#000;
       display:inline-flex; align-items:center; justify-content:center;
       width:60px; height:60px; border-radius:50%;
-      color:#fff; text-decoration:none; font-size:26px;
+      color:#fff; font-size:26px; box-shadow:0 6px 16px rgba(0,0,0,.35);
       background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--bgc) 85%, #ffffff 15%) 0%, var(--bgc) 60%);
       animation: pulseInside 2.2s ease-in-out infinite;
       transition: transform .2s ease;
     }
     .contact-icons a:hover{ transform:scale(1.08); }
-    .email   { --bgc:#EA4335; }
-    .linkedin{ --bgc:#0A66C2; }
-    .github  { --bgc:#181717; }
-    .phone   { --bgc:#25D366; }
-    @keyframes pulseInside {
-      0%   { filter: brightness(1); }
-      50%  { filter: brightness(1.12); }
-      100% { filter: brightness(1); }
+    .email   { --bgc:#EA4335; }  /* Gmail */
+    .linkedin{ --bgc:#0A66C2; }  /* LinkedIn */
+    .github  { --bgc:#181717; }  /* GitHub */
+    .phone   { --bgc:#25D366; }  /* WhatsApp */
+    @keyframes pulseInside{
+      0%{ filter:brightness(1); }
+      50%{ filter:brightness(1.12); }
+      100%{ filter:brightness(1); }
     }
 
-    /* ===== Download Resume Button (two variants in one) ===== */
+    /* ===== Download Resume Button ===== */
     .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
-
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #0b0c10;
-      background: linear-gradient(135deg, #5eead4, #60a5fa);
-      border: 0;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(96,165,250,0.35);
-      transition: transform 0.2s ease, box-shadow 0.3s ease, filter .2s ease;
+    .download-btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:14px 24px; border-radius:999px; font-weight:700; font-size:1rem;
+      color:#0b0c10; background:linear-gradient(135deg,#5eead4,#60a5fa);
+      border:0; text-decoration:none; box-shadow:0 8px 24px rgba(96,165,250,.35);
+      transition:transform .2s ease, box-shadow .3s ease, filter .2s ease;
     }
-    .download-btn:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 12px 32px rgba(96,165,250,0.5); filter: brightness(1.05); }
-    .download-btn i { font-size: 1.1rem; }
-
-    /* Pulse variant: add class "pulse" to the same element */
-    .download-btn.pulse {
-      position: relative;
-      color: #0b0c10;
-      isolation: isolate; /* keep glow below content */
-    }
+    .download-btn:hover{ transform:translateY(-1px) scale(1.03); box-shadow:0 12px 32px rgba(96,165,250,.5); filter:brightness(1.05); }
+    .download-btn i{ font-size:1.1rem; }
+    .download-btn.pulse{ position:relative; isolation:isolate; }
     .download-btn.pulse::after{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:inherit;
+      content:""; position:absolute; inset:-2px; border-radius:inherit; z-index:-1;
       background: radial-gradient(60% 60% at 50% 50%, rgba(96,165,250,.55), rgba(94,234,212,.2) 60%, transparent 70%);
-      filter: blur(10px);
-      z-index:-1;
-      animation: glow 2.2s ease-in-out infinite;
+      filter:blur(10px); animation: glow 2.2s ease-in-out infinite;
     }
-    @keyframes glow {
-      0% { opacity:.6; transform: scale(1); }
-      50% { opacity:.95; transform: scale(1.03); }
-      100% { opacity:.6; transform: scale(1); }
-    }
+    @keyframes glow{ 0%{opacity:.6; transform:scale(1);} 50%{opacity:.95; transform:scale(1.03);} 100%{opacity:.6; transform:scale(1);} }
 
-    /* ===== Timeline (Experience) ===== */
+    /* ===== Timeline ===== */
     .timeline{ display:flex; flex-direction:column; gap:12px; }
-    .timeline-item{ display:grid; grid-template-columns:160px 1fr; gap:18px; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px; }
+    .timeline-item{
+      display:grid; grid-template-columns:160px 1fr; gap:18px;
+      background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px;
+    }
     .pill{ display:inline-block; font-size:.8rem; padding:.22rem .5rem; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--muted); }
     .item-title{ margin:0 0 6px; font-size:1.05rem; }
     .item-org{ font-weight:600; }
 
     /* ===== Projects ===== */
-    .project { display:flex; flex-direction:column; gap:.6rem; padding:16px; border:1px solid var(--border); border-radius:14px; background:var(--panel); }
+    .project{
+      display:flex; flex-direction:column; gap:.6rem; padding:16px;
+      border:1px solid var(--border); border-radius:14px; background:var(--panel);
+    }
     .project h3{ margin:0; font-size:1.05rem; }
     .tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
     .tag-sm{ font-size:.75rem; padding:.2rem .45rem; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:var(--card); }
 
-    /* ===== Contact (two-column layout & form) ===== */
+    /* ===== Contact Section ===== */
     .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:22px; }
     .info-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
     .info-list li{ display:flex; gap:12px; align-items:flex-start; }
-    .circle.icn{ width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:#1e293b; color:#cbd5e1; font-size:18px; box-shadow:0 4px 16px rgba(0,0,0,.25); }
+    .circle.icn{
+      width:44px; height:44px; border-radius:50%;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:#1e293b; color:#cbd5e1; font-size:18px; box-shadow:0 4px 16px rgba(0,0,0,.25);
+    }
     .label{ font-weight:600; }
-
     .contact-form{ display:flex; flex-direction:column; gap:12px; }
     .contact-form .row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     .field{ display:flex; flex-direction:column; gap:6px; }
     .field label{ font-size:.95rem; color:#cbd5e1; }
     .field input, .field textarea{
-      background:#0f1117; color:#eef2f7; border:1px solid #202736; border-radius:12px; padding:12px 14px; outline:none; transition:border .2s, box-shadow .2s;
+      background:#0f1117; color:#eef2f7; border:1px solid #202736; border-radius:12px; padding:12px 14px;
+      outline:none; transition:border .2s, box-shadow .2s;
     }
     .field input:focus, .field textarea:focus{ border-color:#6366f1; box-shadow:0 0 0 3px rgba(99,102,241,.25); }
-    .send-btn{ width:100%; border:0; padding:14px 16px; border-radius:999px; font-weight:700; color:#0b0c10; background:linear-gradient(135deg,#8b5cf6,#60a5fa); box-shadow:0 8px 24px rgba(96,165,250,.35); cursor:pointer; transition:filter .3s ease; }
+    .send-btn{
+      width:100%; border:0; padding:14px 16px; border-radius:999px; font-weight:700; color:#0b0c10;
+      background:linear-gradient(135deg,#8b5cf6,#60a5fa); box-shadow:0 8px 24px rgba(96,165,250,.35); cursor:pointer; transition:filter .3s ease;
+    }
     .send-btn:hover{ filter:brightness(1.05); }
 
     /* ===== Footer ===== */
-    footer { padding:38px 0 60px; color:var(--muted); border-top:1px solid var(--border); }
+    footer{ padding:38px 0 60px; color:var(--muted); border-top:1px solid var(--border); }
 
     /* ===== Responsive ===== */
     @media (max-width:1080px){ .brand a{ white-space:normal; } }
-    @media (max-width:980px){ .grid-3{grid-template-columns:1fr 1fr} .timeline-item{grid-template-columns:1fr} }
+    @media (max-width:980px){ .grid-3{ grid-template-columns:1fr 1fr } .timeline-item{ grid-template-columns:1fr } }
     @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr } .contact-form .row{ grid-template-columns:1fr } }
-    @media (max-width:640px){ .menu{display:none} .grid-3,.grid-2{grid-template-columns:1fr} }
+    @media (max-width:640px){ .menu{ display:none } .grid-3,.grid-2{ grid-template-columns:1fr } }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce){
+      .contact-icons a, .download-btn.pulse::after{ animation: none; }
+      .download-btn{ transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -211,39 +202,35 @@
     <!-- ===== Hero ===== -->
     <section id="home" class="hero">
       <div class="container">
-       <h1 class="hero-hi">Hi, I’m</h1>
+        <h1 class="hero-hi">Hi, I’m</h1>
         <h1 class="hero-name"><span>Vishnu Vardhan Rao Vedurur</span></h1>
 
-<div class="hero-roles">
-  Data Science Graduate <span class="pipe">|</span>
-  Data Analyst <span class="pipe">|</span>
-  ML Enthusiast
-</div>
+        <div class="hero-roles" aria-label="Roles">
+          Data Science Graduate <span class="pipe" aria-hidden="true">|</span>
+          Data Analyst <span class="pipe" aria-hidden="true">|</span>
+          ML Enthusiast
+        </div>
 
-<p class="muted hero-summary">
-  I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics
-  pipelines, intuitive dashboards, and machine learning models that drive outcomes.
-</p>
+        <p class="muted hero-summary">
+          I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics
+          pipelines, intuitive dashboards, and machine learning models that drive outcomes.
+        </p>
 
         <!-- Socials -->
         <div class="contact-icons" style="margin-top:12px">
-          <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email"   title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/vishnu25-ds" target="_blank" class="github"  title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
+          <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://github.com/vishnu25-ds" target="_blank" class="github" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone" aria-hidden="true"></i></a>
         </div>
 
-        <!-- CTA Row: keep ONE of these buttons -->
+        <!-- CTA Row -->
         <div class="cta-row">
-         
-          <!-- Pulsing glow variant: add 'pulse' -->
           <a href="resume_vishnu.pdf" class="download-btn pulse" download>
-            <i class="fas fa-download"></i> Download Resume
+            <i class="fas fa-download" aria-hidden="true"></i> Download Resume
           </a>
         </div>
-
-        <!-- Quick highlights -->
-        
+      </div>
     </section>
 
     <!-- ===== About ===== -->
@@ -402,28 +389,28 @@
 
             <ul class="info-list contact-text">
               <li>
-                <span class="circle icn"><i class="fas fa-location-dot"></i></span>
+                <span class="circle icn"><i class="fas fa-location-dot" aria-hidden="true"></i></span>
                 <div>
                   <div class="label">Location</div>
                   <div class="muted">Memphis, Tennessee</div>
                 </div>
               </li>
               <li>
-                <span class="circle icn"><i class="fas fa-envelope"></i></span>
+                <span class="circle icn"><i class="fas fa-envelope" aria-hidden="true"></i></span>
                 <div>
                   <div class="label">Email</div>
                   <div class="muted">vishnu.mathematica@yahoo.com</div>
                 </div>
               </li>
               <li>
-                <span class="circle icn"><i class="fas fa-phone"></i></span>
+                <span class="circle icn"><i class="fas fa-phone" aria-hidden="true"></i></span>
                 <div>
                   <div class="label">Phone</div>
                   <div class="muted">+1 (901) 468-4971</div>
                 </div>
               </li>
               <li>
-                <span class="circle icn"><i class="fas fa-user-check"></i></span>
+                <span class="circle icn"><i class="fas fa-user-check" aria-hidden="true"></i></span>
                 <div>
                   <div class="label">Available For</div>
                   <div class="muted">Full-time roles, Research collaborations</div>
@@ -434,10 +421,10 @@
             <div style="margin-top:18px">
               <div class="label" style="margin-bottom:8px">Connect With Me</div>
               <div class="contact-icons">
-                <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/vishnu25-ds" target="_blank" class="github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://github.com/vishnu25-ds" target="_blank" class="github" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -445,26 +432,27 @@
           <!-- Right: Contact Form -->
           <div class="card">
             <h3 style="margin:0 0 6px">Send Me a Message</h3>
+            <!-- Replace with your real Formspree ID -->
             <form id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
               <div class="row">
                 <div class="field">
-                  <label>Your Name</label>
-                  <input type="text" name="name" required />
+                  <label for="name">Your Name</label>
+                  <input id="name" type="text" name="name" required />
                 </div>
                 <div class="field">
-                  <label>Your Email</label>
-                  <input type="email" name="email" required />
+                  <label for="email">Your Email</label>
+                  <input id="email" type="email" name="email" required />
                 </div>
               </div>
               <div class="field">
-                <label>Subject</label>
-                <input type="text" name="subject" />
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" name="subject" />
               </div>
               <div class="field">
-                <label>Message</label>
-                <textarea name="message" rows="6" required></textarea>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
               </div>
-              <button type="submit" class="send-btn">Send Message&nbsp;<i class="fas fa-paper-plane"></i></button>
+              <button type="submit" class="send-btn">Send Message&nbsp;<i class="fas fa-paper-plane" aria-hidden="true"></i></button>
             </form>
           </div>
         </div>
