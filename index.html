@@ -47,7 +47,40 @@
     /* ===== Hero ===== */
     .hero { padding:72px 0 24px; }
     .tag { display:inline-block; padding:.45rem .75rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
-    .hero h1 { font-size: clamp(2rem, 4.8vw, 3.4rem); line-height:1.1; letter-spacing:.2px; margin:10px 0 14px; }
+    /* --- Hero typography to match screenshot --- */
+.hero-hi{
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 700;
+  margin: 0 0 .2rem;
+}
+
+.hero-name{
+  font-size: clamp(2.6rem, 8.5vw, 4.8rem); /* big name */
+  line-height: 1.05;
+  letter-spacing: .2px;
+  margin: 0 0 .4rem;
+  font-weight: 800;
+}
+
+.hero-name span{ color: var(--accent); }
+
+.hero-roles{
+  font-size: clamp(1.2rem, 3vw, 2rem);     /* large subtitle with pipes */
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 .6rem;
+}
+
+.hero-roles .pipe{
+  margin: 0 .5rem;
+  opacity: .8;
+}
+
+.hero-summary{
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  max-width: 70ch;     /* readable line length */
+}
+
 
     /* ===== Contact Icon Buttons (inside-only pulse) ===== */
     .contact-icons{ display:flex; gap:15px; flex-wrap:wrap; }
@@ -178,10 +211,19 @@
     <!-- ===== Hero ===== -->
     <section id="home" class="hero">
       <div class="container">
-        <h1>Hi, I’m </h1>
-        <h1> <span style="color:var(--accent)">Vishnu Vardhan Rao Vedurur.</span>.</h1>
-        <span class="tag">Data Science Graduate · Data Analyst · ML Enthusiast</span>
-        <p class="muted">I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics pipelines, intuitive dashboards, and machine learning models that drive outcomes.</p>
+       <h1 class="hero-hi">Hi, I’m</h1>
+        <h1 class="hero-name"><span>Vishnu Vardhan Rao Vedurur</span></h1>
+
+<div class="hero-roles">
+  Data Science Graduate <span class="pipe">|</span>
+  Data Analyst <span class="pipe">|</span>
+  ML Enthusiast
+</div>
+
+<p class="muted hero-summary">
+  I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics
+  pipelines, intuitive dashboards, and machine learning models that drive outcomes.
+</p>
 
         <!-- Socials -->
         <div class="contact-icons" style="margin-top:12px">
