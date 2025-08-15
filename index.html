@@ -1,412 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vishnu Vardhan Rao Vedurur — Portfolio</title>
-  <meta name="description" content="Portfolio of Vishnu Vardhan Rao Vedurur — Data Science Graduate, Data Analyst, Machine Learning Enthusiast." />
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vishnu Vardhan Rao Vedurur — Portfolio</title>
+  <meta name="description" content="Portfolio of Vishnu Vardhan Rao Vedurur — Data Science Graduate, Data Analyst, Machine Learning Enthusiast." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    /* ===== Theme ===== */
-    :root { --bg:#0b0c10; --panel:#111318; --card:#0f1117; --text:#eef2f7; --muted:#94a3b8; --border:#202736; --accent:#5eead4; }
-    html,body{height:100%}
-    body { margin:0; background:var(--bg); color:var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; line-height:1.6; }
-    .container { width:min(1120px,92%); margin:0 auto; }
-    h1,h2,h3{margin:0 0 14px}
-    p{margin:0 0 10px}
-    a{color:inherit; text-decoration:none;} /* no underline anywhere by default */
+  <style>
+    /* ===== Theme ===== */
+    :root { --bg:#0b0c10; --panel:#111318; --card:#0f1117; --text:#eef2f7; --muted:#94a3b8; --border:#202736; --accent:#5eead4; }
+    html,body{height:100%}
+    body { margin:0; background:var(--bg); color:var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; line-height:1.6; }
+    .container { width:min(1120px,92%); margin:0 auto; }
+    h1,h2,h3{margin:0 0 14px}
+    p{margin:0 0 10px}
+    a{color:inherit; text-decoration:none;} /* no underline anywhere by default */
 
-    /* ===== Header / Nav ===== */
-    header {
-      position: sticky; top:0; z-index:50;
-      background: rgba(11,12,16,0.7); backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border);
+    /* ===== Header / Nav ===== */
+    header {
+      position: sticky; top:0; z-index:50;
+      background: rgba(11,12,16,0.7); backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:.65rem; font-weight:800; letter-spacing:.2px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px var(--accent); }
+    .brand a { white-space:nowrap; } /* keep full name on one line on desktop */
+    .menu { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .menu a { padding:.5rem .75rem; border-radius:10px; border:1px solid transparent; opacity:.9; }
+    .menu a:hover { border-color:var(--border); background:var(--panel); }
+
+    /* ===== Generic UI ===== */
+    section{ padding:56px 0; }
+    .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:18px 20px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .muted{ color:var(--muted); }
+    .badge{ display:inline-block; padding:.35rem .7rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
+    .badges{ display:flex; gap:.6rem; flex-wrap:wrap; }
+
+    /* ===== Hero ===== */
+    .hero { padding:72px 0 24px; }
+    .tag { display:inline-block; padding:.45rem .75rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
+    .hero h1 { font-size: clamp(2rem, 4.8vw, 3.4rem); line-height:1.1; letter-spacing:.2px; margin:10px 0 14px; }
+
+    /* ===== Contact Icon Buttons (inside-only pulse) ===== */
+    .contact-icons{ display:flex; gap:15px; flex-wrap:wrap; }
+    .contact-icons a{
+      --bgc:#000; /* will be overridden per icon */
+      display:inline-flex; align-items:center; justify-content:center;
+      width:60px; height:60px; border-radius:50%;
+      color:#fff; text-decoration:none; font-size:26px;
+      background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--bgc) 85%, #ffffff 15%) 0%, var(--bgc) 60%);
+      animation: pulseInside 2.2s ease-in-out infinite;
+      transition: transform .2s ease;
+    }
+    .contact-icons a:hover{ transform:scale(1.08); }
+    .email   { --bgc:#EA4335; }
+    .linkedin{ --bgc:#0A66C2; }
+    .github  { --bgc:#181717; }
+    .phone   { --bgc:#25D366; }
+    .resume  { --bgc:#ef4444; } /* red for resume/PDF */
+
+    /* Pulse the fill subtly without outer glow */
+    @keyframes pulseInside {
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(1.12); }
+      100% { filter: brightness(1); }
+    }
+
+    /* New style for the hero resume button */
+    .resume-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px; /* Space between icon and text */
+      padding: 14px 28px; /* Adjust padding as needed */
+      border: 2px solid #60a5fa; /* Blue border */
+      border-radius: 999px; /* Fully rounded corners */
+      background: var(--bg); /* Black background */
+      color: #60a5fa; /* Blue text and icon color */
+      font-weight: 600;
+      font-size: 1.1rem; /* Adjust font size */
+      text-decoration: none; /* No underline */
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); /* Subtle blue glow */
     }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-    .brand { display:flex; align-items:center; gap:.65rem; font-weight:800; letter-spacing:.2px; }
-    .dot { width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px var(--accent); }
-    .brand a { white-space:nowrap; } /* keep full name on one line on desktop */
-    .menu { display:flex; gap:.6rem; flex-wrap:wrap; }
-    .menu a { padding:.5rem .75rem; border-radius:10px; border:1px solid transparent; opacity:.9; }
-    .menu a:hover { border-color:var(--border); background:var(--panel); }
 
-    /* ===== Generic UI ===== */
-    section{ padding:56px 0; }
-    .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:18px 20px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .muted{ color:var(--muted); }
-    .badge{ display:inline-block; padding:.35rem .7rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
-    .badges{ display:flex; gap:.6rem; flex-wrap:wrap; }
-
-    /* ===== Hero ===== */
-    .hero { padding:72px 0 24px; }
-    .tag { display:inline-block; padding:.45rem .75rem; border:1px solid var(--border); border-radius:999px; background:var(--card); color:var(--muted); font-size:.9rem; }
-    .hero h1 { font-size: clamp(2rem, 4.8vw, 3.4rem); line-height:1.1; letter-spacing:.2px; margin:10px 0 14px; }
-
-    /* ===== Contact Icon Buttons (inside-only pulse) ===== */
-    .contact-icons{ display:flex; gap:15px; flex-wrap:wrap; }
-    .contact-icons a{
-      --bgc:#000; /* will be overridden per icon */
-      display:inline-flex; align-items:center; justify-content:center;
-      width:60px; height:60px; border-radius:50%;
-      color:#fff; text-decoration:none; font-size:26px;
-      background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--bgc) 85%, #ffffff 15%) 0%, var(--bgc) 60%);
-      animation: pulseInside 2.2s ease-in-out infinite;
-      transition: transform .2s ease;
-    }
-    .contact-icons a:hover{ transform:scale(1.08); }
-    .email   { --bgc:#EA4335; }
-    .linkedin{ --bgc:#0A66C2; }
-    .github  { --bgc:#181717; }
-    .phone   { --bgc:#25D366; }
-    .resume  { --bgc:#ef4444; } /* red for resume/PDF */
-
-
-    /* Pulse the fill subtly without outer glow */
-    @keyframes pulseInside {
-      0%   { filter: brightness(1); }
-      50%  { filter: brightness(1.12); }
-      100% { filter: brightness(1); }
+    .resume-hero-btn:hover {
+      background: #60a5fa; /* Fill with blue on hover */
+      color: var(--bg); /* Change text to dark on hover */
+      box-shadow: 0 0 25px rgba(96, 165, 250, 0.6); /* More prominent glow on hover */
+      transform: translateY(-2px); /* Slight lift on hover */
     }
 
-    /* ===== Timeline (Experience) ===== */
-    .timeline{ display:flex; flex-direction:column; gap:12px; }
-    .timeline-item{ display:grid; grid-template-columns:160px 1fr; gap:18px; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px; }
-    .pill{ display:inline-block; font-size:.8rem; padding:.22rem .5rem; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--muted); }
-    .item-title{ margin:0 0 6px; font-size:1.05rem; }
-    .item-org{ font-weight:600; }
+    /* ===== Timeline (Experience) ===== */
+    .timeline{ display:flex; flex-direction:column; gap:12px; }
+    .timeline-item{ display:grid; grid-template-columns:160px 1fr; gap:18px; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px; }
+    .pill{ display:inline-block; font-size:.8rem; padding:.22rem .5rem; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--muted); }
+    .item-title{ margin:0 0 6px; font-size:1.05rem; }
+    .item-org{ font-weight:600; }
 
-    /* ===== Projects ===== */
-    .project { display:flex; flex-direction:column; gap:.6rem; padding:16px; border:1px solid var(--border); border-radius:14px; background:var(--panel); }
-    .project h3{ margin:0; font-size:1.05rem; }
-    .tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
-    .tag-sm{ font-size:.75rem; padding:.2rem .45rem; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:var(--card); }
+    /* ===== Projects ===== */
+    .project { display:flex; flex-direction:column; gap:.6rem; padding:16px; border:1px solid var(--border); border-radius:14px; background:var(--panel); }
+    .project h3{ margin:0; font-size:1.05rem; }
+    .tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag-sm{ font-size:.75rem; padding:.2rem .45rem; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:var(--card); }
 
-    /* ===== Contact (two-column layout & form) ===== */
-    .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:22px; }
-    .info-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
-    .info-list li{ display:flex; gap:12px; align-items:flex-start; }
-    .circle.icn{ width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:#1e293b; color:#cbd5e1; font-size:18px; box-shadow:0 4px 16px rgba(0,0,0,.25); }
-    .label{ font-weight:600; }
+    /* ===== Contact (two-column layout & form) ===== */
+    .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:22px; }
+    .info-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+    .info-list li{ display:flex; gap:12px; align-items:flex-start; }
+    .circle.icn{ width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:#1e293b; color:#cbd5e1; font-size:18px; box-shadow:0 4px 16px rgba(0,0,0,.25); }
+    .label{ font-weight:600; }
 
-    .contact-form{ display:flex; flex-direction:column; gap:12px; }
-    .contact-form .row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .field{ display:flex; flex-direction:column; gap:6px; }
-    .field label{ font-size:.95rem; color:#cbd5e1; }
-    .field input, .field textarea{
-      background:#0f1117; color:#eef2f7; border:1px solid #202736; border-radius:12px; padding:12px 14px; outline:none; transition:border .2s, box-shadow .2s;
-    }
-    .field input:focus, .field textarea:focus{ border-color:#6366f1; box-shadow:0 0 0 3px rgba(99,102,241,.25); }
-    .send-btn{ width:100%; border:0; padding:14px 16px; border-radius:999px; font-weight:700; color:#0b0c10; background:linear-gradient(135deg,#8b5cf6,#60a5fa); box-shadow:0 8px 24px rgba(96,165,250,.35); cursor:pointer; transition:filter .3s ease; }
-    .send-btn:hover{ filter:brightness(1.05); }
+    .contact-form{ display:flex; flex-direction:column; gap:12px; }
+    .contact-form .row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .field{ display:flex; flex-direction:column; gap:6px; }
+    .field label{ font-size:.95rem; color:#cbd5e1; }
+    .field input, .field textarea{
+      background:#0f1117; color:#eef2f7; border:1px solid #202736; border-radius:12px; padding:12px 14px; outline:none; transition:border .2s, box-shadow .2s;
+    }
+    .field input:focus, .field textarea:focus{ border-color:#6366f1; box-shadow:0 0 0 3px rgba(99,102,241,.25); }
+    .send-btn{ width:100%; border:0; padding:14px 16px; border-radius:999px; font-weight:700; color:#0b0c10; background:linear-gradient(135deg,#8b5cf6,#60a5fa); box-shadow:0 8px 24px rgba(96,165,250,.35); cursor:pointer; transition:filter .3s ease; }
+    .send-btn:hover{ filter:brightness(1.05); }
 
-    /* Keep email/phone text plain (no underline) */
-    .contact-text a{ text-decoration:none; }
+    /* Keep email/phone text plain (no underline) */
+    .contact-text a{ text-decoration:none; }
 
-    /* ===== Footer ===== */
-    footer { padding:38px 0 60px; color:var(--muted); border-top:1px solid var(--border); }
+    /* ===== Footer ===== */
+    footer { padding:38px 0 60px; color:var(--muted); border-top:1px solid var(--border); }
 
-    /* ===== Responsive ===== */
-    @media (max-width:1080px){ .brand a{ white-space:normal; } }
-    @media (max-width:980px){ .grid-3{grid-template-columns:1fr 1fr} .timeline-item{grid-template-columns:1fr} }
-    @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr } .contact-form .row{ grid-template-columns:1fr } }
-    @media (max-width:640px){ .menu{display:none} .grid-3,.grid-2{grid-template-columns:1fr} }
-  </style>
+    /* ===== Responsive ===== */
+    @media (max-width:1080px){ .brand a{ white-space:normal; } }
+    @media (max-width:980px){ .grid-3{grid-template-columns:1fr 1fr} .timeline-item{grid-template-columns:1fr} }
+    @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr } .contact-form .row{ grid-template-columns:1fr } }
+    @media (max-width:640px){ .menu{display:none} .grid-3,.grid-2{grid-template-columns:1fr} }
+  </style>
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
-        <!-- Full name in top-left -->
-        <a href="#home">Vishnu Vardhan Rao Vedurur</a>
-      </div>
-      <nav class="menu" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+                <a href="#home">Vishnu Vardhan Rao Vedurur</a>
+      </div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <main>
-    <!-- ===== Hero ===== -->
-    <section id="home" class="hero">
-      <div class="container">
-        <span class="tag">Data Science Graduate · Data Analyst · ML Enthusiast</span>
-        <h1>Hi, I’m <span style="color:var(--accent)">Vishnu Vardhan Rao Vedurur</span>.</h1>
-        <p class="muted">I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics pipelines, intuitive dashboards, and machine learning models that drive outcomes.</p>
-        <div class="contact-icons" style="margin-top:12px">
-          <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email"   title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/vishnu25-ds" target="_blank" class="github"  title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
-          <a href="resume_vishnu.pdf" download class="resume" title="Download Resume">
-              <i class="fas fa-file-arrow-down"></i>
-          </a>
-        </div>
+  <main>
+        <section id="home" class="hero">
+      <div class="container">
+        <span class="tag">Data Science Graduate · Data Analyst · ML Enthusiast</span>
+        <h1>Hi, I’m <span style="color:var(--accent)">Vishnu Vardhan Rao Vedurur</span>.</h1>
+        <p class="muted">I turn data into decisions using Python, R, SQL, and modern BI tools. I enjoy building reliable analytics pipelines, intuitive dashboards, and machine learning models that drive outcomes.</p>
+        <div class="contact-icons" style="margin-top:12px">
+          <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email"   title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/vishnu25-ds" target="_blank" class="github"  title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
+                    <a href="resume_vishnu.pdf" download class="resume" title="Download Resume">
+              <i class="fas fa-file-arrow-down"></i>
+          </a>
+        </div>
 
-        <!-- Remove Highlights box -->
-<!-- Replace with Resume Download -->
-<div class="mt-6">
-  <a href="resume_vishnu.pdf" download class="inline-block px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-md hover:scale-105 transition-transform duration-200">
-    📄 Download Resume
-  </a>
-</div>
+                <div style="margin-top:22px;">
+          <a href="resume_vishnu.pdf" download class="resume-hero-btn">
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
 
-      </div>
-    </section>
+        <section id="about">
+      <div class="container">
+        <h2>About</h2>
+        <div class="grid-2">
+          <div class="card">
+            <p>
+              I’m a graduate student in Data Science with hands-on experience in <strong>data analysis</strong>,
+              <strong>machine learning</strong>, and <strong>visualization</strong> across Python, R, and BI tools.
+              I love surfacing clear insights, building explainable models, and collaborating with stakeholders to move metrics that matter.
+            </p>
+            <p class="muted" style="margin-top:14px">
+              Current interests: feature engineering for tabular ML, reproducible analytics, and lightweight MLOps for small teams.
+            </p>
+          </div>
+          <div class="card">
+            <h3 style="margin:4px 0 12px">Focus Areas</h3>
+            <div class="badges">
+              <span class="badge">Exploratory Data Analysis</span>
+              <span class="badge">Predictive Modeling</span>
+              <span class="badge">Dashboarding</span>
+              <span class="badge">NLP (Sentiment)</span>
+              <span class="badge">Data Migration</span>
+              <span class="badge">SQL Optimization</span>
+              <span class="badge">Reporting Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ===== About ===== -->
-    <section id="about">
-      <div class="container">
-        <h2>About</h2>
-        <div class="grid-2">
-          <div class="card">
-            <p>
-              I’m a graduate student in Data Science with hands-on experience in <strong>data analysis</strong>,
-              <strong>machine learning</strong>, and <strong>visualization</strong> across Python, R, and BI tools.
-              I love surfacing clear insights, building explainable models, and collaborating with stakeholders to move metrics that matter.
-            </p>
-            <p class="muted" style="margin-top:14px">
-              Current interests: feature engineering for tabular ML, reproducible analytics, and lightweight MLOps for small teams.
-            </p>
-          </div>
-          <div class="card">
-            <h3 style="margin:4px 0 12px">Focus Areas</h3>
-            <div class="badges">
-              <span class="badge">Exploratory Data Analysis</span>
-              <span class="badge">Predictive Modeling</span>
-              <span class="badge">Dashboarding</span>
-              <span class="badge">NLP (Sentiment)</span>
-              <span class="badge">Data Migration</span>
-              <span class="badge">SQL Optimization</span>
-              <span class="badge">Reporting Automation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3 style="margin-top:0">Languages & Libraries</h3>
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">R</span>
+              <span class="badge">SQL (MySQL)</span>
+              <span class="badge">MongoDB</span>
+              <span class="badge">NumPy</span>
+              <span class="badge">pandas</span>
+              <span class="badge">matplotlib</span>
+              <span class="badge">seaborn</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">BI & Tools</h3>
+            <div class="badges">
+              <span class="badge">Power BI</span>
+              <span class="badge">Tableau</span>
+              <span class="badge">Jupyter</span>
+              <span class="badge">RStudio</span>
+              <span class="badge">VS Code</span>
+              <span class="badge">PyCharm</span>
+              <span class="badge">Microsoft Office</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Cloud & Platforms</h3>
+            <div class="badges">
+              <span class="badge">Google Cloud Platform</span>
+              <span class="badge">Cloud SQL</span>
+              <span class="badge">Git/GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ===== Skills ===== -->
-    <section id="skills">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h3 style="margin-top:0">Languages & Libraries</h3>
-            <div class="badges">
-              <span class="badge">Python</span>
-              <span class="badge">R</span>
-              <span class="badge">SQL (MySQL)</span>
-              <span class="badge">MongoDB</span>
-              <span class="badge">NumPy</span>
-              <span class="badge">pandas</span>
-              <span class="badge">matplotlib</span>
-              <span class="badge">seaborn</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="margin-top:0">BI & Tools</h3>
-            <div class="badges">
-              <span class="badge">Power BI</span>
-              <span class="badge">Tableau</span>
-              <span class="badge">Jupyter</span>
-              <span class="badge">RStudio</span>
-              <span class="badge">VS Code</span>
-              <span class="badge">PyCharm</span>
-              <span class="badge">Microsoft Office</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="margin-top:0">Cloud & Platforms</h3>
-            <div class="badges">
-              <span class="badge">Google Cloud Platform</span>
-              <span class="badge">Cloud SQL</span>
-              <span class="badge">Git/GitHub</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="experience">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div><span class="pill">Mar 2024 – May 2025</span></div>
+            <div>
+              <p class="item-title"><span class="item-org">University of Memphis</span> · Research Assistant · Memphis, TN</p>
+              <ul class="muted" style="margin:0 0 0 18px">
+                <li>Resolved 300+ technical issues across software, hardware, and network domains; maintained a 90% first-call resolution rate.</li>
+                <li>Managed service tickets, IT inventory, and supported system upgrades to enhance reliability.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div><span class="pill">Aug 2017 – Jul 2023</span></div>
+            <div>
+              <p class="item-title"><span class="item-org">Hindu Junior College for Girls</span> · Senior Data Analyst · India</p>
+              <ul class="muted" style="margin:0 0 0 18px">
+                <li>Led data initiatives improving academic outcomes by 15% and boosting retention 12% YoY.</li>
+                <li>Built Power BI/Tableau dashboards; cut faculty review time by 40% and streamlined reporting.</li>
+                <li>Migrated data from legacy systems to SQL; improved retrieval accuracy by 25%.</li>
+                <li>Automated attendance tracking; increased accuracy by 20% and reduced processing time by 15%.</li>
+                <li>Developed predictive models (Python) achieving 95% enrollment forecast accuracy.</li>
+                <li>Performed sentiment analysis on student feedback; improved satisfaction by 10%.</li>
+                <li>Ensured GDPR-compliant governance; trained 50+ staff on analytics tools.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ===== Experience ===== -->
-    <section id="experience">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div><span class="pill">Mar 2024 – May 2025</span></div>
-            <div>
-              <p class="item-title"><span class="item-org">University of Memphis</span> · Research Assistant · Memphis, TN</p>
-              <ul class="muted" style="margin:0 0 0 18px">
-                <li>Resolved 300+ technical issues across software, hardware, and network domains; maintained a 90% first-call resolution rate.</li>
-                <li>Managed service tickets, IT inventory, and supported system upgrades to enhance reliability.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div><span class="pill">Aug 2017 – Jul 2023</span></div>
-            <div>
-              <p class="item-title"><span class="item-org">Hindu Junior College for Girls</span> · Senior Data Analyst · India</p>
-              <ul class="muted" style="margin:0 0 0 18px">
-                <li>Led data initiatives improving academic outcomes by 15% and boosting retention 12% YoY.</li>
-                <li>Built Power BI/Tableau dashboards; cut faculty review time by 40% and streamlined reporting.</li>
-                <li>Migrated data from legacy systems to SQL; improved retrieval accuracy by 25%.</li>
-                <li>Automated attendance tracking; increased accuracy by 20% and reduced processing time by 15%.</li>
-                <li>Developed predictive models (Python) achieving 95% enrollment forecast accuracy.</li>
-                <li>Performed sentiment analysis on student feedback; improved satisfaction by 10%.</li>
-                <li>Ensured GDPR-compliant governance; trained 50+ staff on analytics tools.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="grid-3">
+          <div class="project">
+            <h3>Search Engine Interface (Web Scraping)</h3>
+            <p class="muted">Python-Flask app that scrapes sites and ranks results via cosine similarity; reduced search time by 35% and improved relevance by 25% after text cleaning and stemming.</p>
+            <div class="tags">
+              <span class="tag-sm">Python</span>
+              <span class="tag-sm">Flask</span>
+              <span class="tag-sm">NLP</span>
+              <span class="tag-sm">Cosine Similarity</span>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Predictive Insights into Hotel Reservations</h3>
+            <p class="muted">Analyzed booking data to uncover cancellation trends and peak periods, improving forecast accuracy by 20% and room utilization by 15%.</p>
+            <div class="tags">
+              <span class="tag-sm">Pandas</span>
+              <span class="tag-sm">Visualization</span>
+              <span class="tag-sm">Forecasting</span>
+            </div>
+          </div>
+          <div class="project">
+            <h3>Real Estate Price Prediction</h3>
+            <p class="muted">Built Linear Regression, Random Forest, and XGBoost models to predict prices; achieved R² = 0.92 on test data and reduced RMSE by 18% through feature engineering and outlier treatment.</p>
+            <div class="tags">
+              <span class="tag-sm">Scikit-learn</span>
+              <span class="tag-sm">XGBoost</span>
+              <span class="tag-sm">Feature Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ===== Projects ===== -->
-    <section id="projects">
-      <div class="container">
-        <h2>Projects</h2>
-        <div class="grid-3">
-          <div class="project">
-            <h3>Search Engine Interface (Web Scraping)</h3>
-            <p class="muted">Python-Flask app that scrapes sites and ranks results via cosine similarity; reduced search time by 35% and improved relevance by 25% after text cleaning and stemming.</p>
-            <div class="tags">
-              <span class="tag-sm">Python</span>
-              <span class="tag-sm">Flask</span>
-              <span class="tag-sm">NLP</span>
-              <span class="tag-sm">Cosine Similarity</span>
-            </div>
-          </div>
-          <div class="project">
-            <h3>Predictive Insights into Hotel Reservations</h3>
-            <p class="muted">Analyzed booking data to uncover cancellation trends and peak periods, improving forecast accuracy by 20% and room utilization by 15%.</p>
-            <div class="tags">
-              <span class="tag-sm">Pandas</span>
-              <span class="tag-sm">Visualization</span>
-              <span class="tag-sm">Forecasting</span>
-            </div>
-          </div>
-          <div class="project">
-            <h3>Real Estate Price Prediction</h3>
-            <p class="muted">Built Linear Regression, Random Forest, and XGBoost models to predict prices; achieved R² = 0.92 on test data and reduced RMSE by 18% through feature engineering and outlier treatment.</p>
-            <div class="tags">
-              <span class="tag-sm">Scikit-learn</span>
-              <span class="tag-sm">XGBoost</span>
-              <span class="tag-sm">Feature Engineering</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="contact">
+      <div class="container">
+        <h2>Get In <span style="color:#60a5fa">Touch</span></h2>
+        <div class="contact-grid">
+                    <div class="card">
+            <h3 style="margin:0 0 6px">Contact Information</h3>
+            <p class="muted" style="margin:0 0 16px">Feel free to reach out for opportunities, collaborations, or questions about AI/ML and Data Science.</p>
 
-    <!-- ===== Contact (info + form; icons with inside pulse) ===== -->
-    <section id="contact">
-      <div class="container">
-        <h2>Get In <span style="color:#60a5fa">Touch</span></h2>
-        <div class="contact-grid">
-          <!-- Left: Contact Information -->
-          <div class="card">
-            <h3 style="margin:0 0 6px">Contact Information</h3>
-            <p class="muted" style="margin:0 0 16px">Feel free to reach out for opportunities, collaborations, or questions about AI/ML and Data Science.</p>
+            <ul class="info-list contact-text">
+              <li>
+                <span class="circle icn"><i class="fas fa-location-dot"></i></span>
+                <div>
+                  <div class="label">Location</div>
+                  <div class="muted">Memphis, Tennessee</div>
+                </div>
+              </li>
+              <li>
+                <span class="circle icn"><i class="fas fa-envelope"></i></span>
+                <div>
+                  <div class="label">Email</div>
+                  <div class="muted">vishnu.mathematica@yahoo.com</div>
+                </div>
+              </li>
+              <li>
+                <span class="circle icn"><i class="fas fa-phone"></i></span>
+                <div>
+                  <div class="label">Phone</div>
+                  <div class="muted">+1 (901) 468-4971</div>
+                </div>
+              </li>
+              <li>
+                <span class="circle icn"><i class="fas fa-user-check"></i></span>
+                <div>
+                  <div class="label">Available For</div>
+                  <div class="muted">Full-time roles, Research collaborations</div>
+                </div>
+              </li>
+            </ul>
 
-            <ul class="info-list contact-text">
-              <li>
-                <span class="circle icn"><i class="fas fa-location-dot"></i></span>
-                <div>
-                  <div class="label">Location</div>
-                  <div class="muted">Memphis, Tennessee</div>
-                </div>
-              </li>
-              <li>
-                <span class="circle icn"><i class="fas fa-envelope"></i></span>
-                <div>
-                  <div class="label">Email</div>
-                  <div class="muted">vishnu.mathematica@yahoo.com</div>
-                </div>
-              </li>
-              <li>
-                <span class="circle icn"><i class="fas fa-phone"></i></span>
-                <div>
-                  <div class="label">Phone</div>
-                  <div class="muted">+1 (901) 468-4971</div>
-                </div>
-              </li>
-              <li>
-                <span class="circle icn"><i class="fas fa-user-check"></i></span>
-                <div>
-                  <div class="label">Available For</div>
-                  <div class="muted">Full-time roles, Research collaborations</div>
-                </div>
-              </li>
-            </ul>
-
-            <div style="margin-top:18px">
-              <div class="label" style="margin-bottom:8px">Connect With Me</div>
-              <div class="contact-icons">
-                <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/vishnu25-ds" target="_blank" class="github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
-                <a href="resume_vishnu.pdf" download class="resume" title="Download Resume">
-  <i class="fas fa-file-arrow-down"></i>
+            <div style="margin-top:18px">
+              <div class="label" style="margin-bottom:8px">Connect With Me</div>
+              <div class="contact-icons">
+                <a href="mailto:vishnu.mathematica@yahoo.com" target="_blank" class="email" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vishnu-vardhan-rao-vedurur-62977440" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/vishnu25-ds" target="_blank" class="github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="tel:+19014684971" class="phone" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="resume_vishnu.pdf" download class="resume" title="Download Resume">
+  <i class="fas fa-file-arrow-down"></i>
 </a>
 
-              </div>
-            </div>
-          </div>
+              </div>
+            </div>
+          </div>
 
-          <!-- Right: Contact Form -->
-          <div class="card">
-            <h3 style="margin:0 0 6px">Send Me a Message</h3>
-            <!-- Replace your_form_id with your Formspree ID if you want live submissions -->
-            <form id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
-              <div class="row">
-                <div class="field">
-                  <label>Your Name</label>
-                  <input type="text" name="name" required />
-                </div>
-                <div class="field">
-                  <label>Your Email</label>
-                  <input type="email" name="email" required />
-                </div>
-              </div>
-              <div class="field">
-                <label>Subject</label>
-                <input type="text" name="subject" />
-              </div>
-              <div class="field">
-                <label>Message</label>
-                <textarea name="message" rows="6" required></textarea>
-              </div>
-              <button type="submit" class="send-btn">Send Message&nbsp;<i class="fas fa-paper-plane"></i></button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+                    <div class="card">
+            <h3 style="margin:0 0 6px">Send Me a Message</h3>
+                        <form id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+              <div class="row">
+                <div class="field">
+                  <label>Your Name</label>
+                  <input type="text" name="name" required />
+                </div>
+                <div class="field">
+                  <label>Your Email</label>
+                  <input type="email" name="email" required />
+                </div>
+              </div>
+              <div class="field">
+                <label>Subject</label>
+                <input type="text" name="subject" />
+              </div>
+              <div class="field">
+                <label>Message</label>
+                <textarea name="message" rows="6" required></textarea>
+              </div>
+              <button type="submit" class="send-btn">Send Message&nbsp;<i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer>
-    <div class="container">
-      © <span id="year"></span> Vishnu Vardhan Rao Vedurur · Built with HTML/CSS · Deployed on GitHub Pages
-    </div>
-  </footer>
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Vishnu Vardhan Rao Vedurur · Built with HTML/CSS · Deployed on GitHub Pages
+    </div>
+  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
