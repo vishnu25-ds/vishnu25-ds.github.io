@@ -201,8 +201,62 @@
   transform: scale(1.1);
   transition: all 0.2s ease-in-out;
 }
+/* ===== Skills Icon Grid ===== */
+.skills-wrap { margin-top: 10px; }
+.skills-grid{
+  display:grid;
+  grid-template-columns: repeat(7, minmax(120px,1fr)); /* desktop */
+  gap:18px;
+}
+.skill-card{
+  background: linear-gradient(180deg, #0f1117, #0d0f14);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  transition: transform .18s ease, box-shadow .25s ease, border-color .18s ease;
+}
+.skill-card:hover{
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+}
+.skill-icon{
+  font-size: 36px;           /* Devicon/FA icon size */
+  line-height: 1;
+  margin-bottom:10px;
+}
+.skill-name{
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--text);
+  text-align:center;
+}
+
+/* Quick brand colors (override per-icon if you want exact brand hues) */
+.c-blue   { color:#60a5fa; }   /* Tailwind blue-400 vibe */
+.c-green  { color:#22c55e; }
+.c-yellow { color:#facc15; }
+.c-red    { color:#ef4444; }
+.c-orange { color:#f59e0b; }
+.c-pink   { color:#f472b6; }
+.c-teal   { color:#2dd4bf; }
+.c-purple { color:#a78bfa; }
+.c-white  { color:#e5e7eb; }   /* for monochrome logos like GitHub */
+.c-azure  { color:#0EA5E9; }   /* alt blue */
+.c-gray   { color:#94a3b8; }
+
+/* Responsive */
+@media (max-width:1100px){ .skills-grid{ grid-template-columns: repeat(5, minmax(120px,1fr)); } }
+@media (max-width:800px){  .skills-grid{ grid-template-columns: repeat(4, minmax(120px,1fr)); } }
+@media (max-width:600px){  .skills-grid{ grid-template-columns: repeat(3, minmax(110px,1fr)); } }
+@media (max-width:420px){  .skills-grid{ grid-template-columns: repeat(2, minmax(110px,1fr)); } }
 
   </style>
+  <!-- Add under your Font Awesome link -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
 </head>
 <body>
 
@@ -295,39 +349,64 @@
       <div class="container">
         <h2>Skills</h2>
         <div class="grid-3">
-          <div class="card">
-            <h3 style="margin-top:0">Languages & Libraries</h3>
-            <div class="badges">
-              <span class="badge">Python</span>
-              <span class="badge">R</span>
-              <span class="badge">SQL (MySQL)</span>
-              <span class="badge">MongoDB</span>
-              <span class="badge">NumPy</span>
-              <span class="badge">pandas</span>
-              <span class="badge">matplotlib</span>
-              <span class="badge">seaborn</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="margin-top:0">BI & Tools</h3>
-            <div class="badges">
-              <span class="badge">Power BI</span>
-              <span class="badge">Tableau</span>
-              <span class="badge">Jupyter</span>
-              <span class="badge">RStudio</span>
-              <span class="badge">VS Code</span>
-              <span class="badge">PyCharm</span>
-              <span class="badge">Microsoft Office</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="margin-top:0">Cloud & Platforms</h3>
-            <div class="badges">
-              <span class="badge">Google Cloud Platform</span>
-              <span class="badge">Cloud SQL</span>
-              <span class="badge">Git/GitHub</span>
-            </div>
-          </div>
+          <section id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+
+    <div class="skills-wrap">
+      <div class="skills-grid">
+
+        <!-- Row 1 -->
+        <div class="skill-card"><i class="devicon-python-plain skill-icon c-teal"></i><div class="skill-name">Python</div></div>
+        <div class="skill-card"><i class="devicon-mysql-plain skill-icon c-yellow"></i><div class="skill-name">SQL (MySQL)</div></div>
+        <div class="skill-card"><i class="devicon-r-plain skill-icon c-blue"></i><div class="skill-name">R</div></div>
+        <div class="skill-card"><i class="devicon-matlab-plain skill-icon c-orange"></i><div class="skill-name">MATLAB</div></div>
+        <div class="skill-card"><i class="devicon-html5-plain skill-icon c-orange"></i><div class="skill-name">HTML</div></div>
+        <div class="skill-card"><i class="devicon-css3-plain skill-icon c-blue"></i><div class="skill-name">CSS</div></div>
+        <div class="skill-card"><i class="devicon-numpy-plain skill-icon c-blue"></i><div class="skill-name">NumPy</div></div>
+
+        <!-- Row 2 -->
+        <div class="skill-card"><i class="devicon-pandas-plain skill-icon c-teal"></i><div class="skill-name">Pandas</div></div>
+        <div class="skill-card"><i class="devicon-scikitlearn-plain skill-icon c-yellow"></i><div class="skill-name">Scikit-learn</div></div>
+        <div class="skill-card"><i class="devicon-matplotlib-plain skill-icon c-purple"></i><div class="skill-name">Matplotlib</div></div>
+        <div class="skill-card"><i class="devicon-seaborn-original skill-icon c-teal"></i><div class="skill-name">Seaborn</div></div>
+        <div class="skill-card"><i class="devicon-nltk-plain skill-icon c-pink"></i><div class="skill-name">NLTK</div></div>
+        <div class="skill-card"><i class="devicon-apachespark-original skill-icon c-yellow"></i><div class="skill-name">PySpark</div></div>
+        <div class="skill-card"><i class="devicon-tensorflow-original skill-icon c-orange"></i><div class="skill-name">TensorFlow</div></div>
+
+        <!-- Row 3 -->
+        <div class="skill-card"><i class="devicon-pytorch-original skill-icon c-red"></i><div class="skill-name">PyTorch</div></div>
+        <div class="skill-card"><i class="devicon-tableau-plain skill-icon c-green"></i><div class="skill-name">Tableau</div></div>
+        <div class="skill-card"><i class="devicon-powerbi-plain skill-icon c-yellow"></i><div class="skill-name">Power BI</div></div>
+        <div class="skill-card"><i class="devicon-mongodb-plain skill-icon c-green"></i><div class="skill-name">MongoDB</div></div>
+        <div class="skill-card"><i class="devicon-googlecloud-plain skill-icon c-blue"></i><div class="skill-name">GCP</div></div>
+        <div class="skill-card"><i class="devicon-googlecloud-plain skill-icon c-azure"></i><div class="skill-name">Cloud SQL</div></div>
+        <div class="skill-card"><i class="devicon-docker-plain skill-icon c-blue"></i><div class="skill-name">Docker</div></div>
+
+        <!-- Row 4 -->
+        <div class="skill-card"><i class="devicon-jupyter-plain skill-icon c-orange"></i><div class="skill-name">Jupyter</div></div>
+        <div class="skill-card"><i class="devicon-git-plain skill-icon c-orange"></i><div class="skill-name">Git</div></div>
+        <div class="skill-card"><i class="devicon-github-original skill-icon c-white"></i><div class="skill-name">GitHub</div></div>
+        <div class="skill-card"><i class="devicon-bash-plain skill-icon c-gray"></i><div class="skill-name">Bash</div></div>
+        <div class="skill-card"><i class="fa-solid fa-spider skill-icon c-pink"></i><div class="skill-name">Web Scraping</div></div>
+        <div class="skill-card"><i class="fa-solid fa-brain skill-icon c-yellow"></i><div class="skill-name">ML</div></div>
+        <div class="skill-card"><i class="fa-solid fa-comments skill-icon c-teal"></i><div class="skill-name">NLP</div></div>
+
+        <!-- Row 5 (optional) -->
+        <div class="skill-card"><i class="fa-solid fa-robot skill-icon c-teal"></i><div class="skill-name">AI Agents</div></div>
+        <div class="skill-card"><i class="fa-solid fa-book skill-icon c-purple"></i><div class="skill-name">LLMs</div></div>
+        <div class="skill-card"><i class="fa-solid fa-brain skill-icon c-teal"></i><div class="skill-name">Deep Learning</div></div>
+        <div class="skill-card"><i class="fa-solid fa-file-excel skill-icon c-green"></i><div class="skill-name">MS Excel</div></div>
+        <div class="skill-card"><i class="fa-solid fa-layer-group skill-icon c-purple"></i><div class="skill-name">Streamlit</div></div>
+        <div class="skill-card"><i class="fa-solid fa-link skill-icon c-teal"></i><div class="skill-name">LangChain</div></div>
+        <div class="skill-card"><i class="fa-solid fa-diagram-project skill-icon c-purple"></i><div class="skill-name">LangGraph</div></div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
         </div>
       </div>
     </section>
